@@ -89,6 +89,9 @@ class FuncionarioController extends Controller
         $endereco->pais           = $request->pais;
         $endereco->funcionario_id = $funcionario->id;
 
+        // Saving the data
+        $endereco->save();        
+
         // Returning the data
         return new StoreResource([
             'funcionario' => $funcionario,
@@ -128,10 +131,16 @@ class FuncionarioController extends Controller
     {
         // Getting the funcionario
         $funcionario = $request->funcionario;
+        
+        // Getting the address
+        $endereco = $request->endereco;
 
         // Deleting the funcionario
         try {
             $funcionario->delete();
+            if ($endereco) {
+                $endereco->delete();
+            }
         } catch (\Throwable $th) {
             throw $th;
         }

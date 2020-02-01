@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Utils\HttpStatusCodes;
 use App\Funcionario;
+use App\Endereco;
 
 class Destroy extends FormRequest
 {
@@ -55,11 +56,13 @@ class Destroy extends FormRequest
         // Getting the funcionario
         $this->funcionario_id = $this->route('funcionario');
         $this->funcionario = Funcionario::find($this->funcionario_id);
+        $this->endereco = Endereco::find($this->funcionario_id);
 
         // Setting the data
         $this->merge([
             'funcionario' => $this->funcionario,
-            'funcionario_id' => $this->funcionario_id
+            'funcionario_id' => $this->funcionario_id,
+            'endereco' => $this->endereco,
         ]);
     }
     
