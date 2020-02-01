@@ -38,6 +38,6 @@ class CheckNome implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return __('api.name_is_invalid');
     }
 }
