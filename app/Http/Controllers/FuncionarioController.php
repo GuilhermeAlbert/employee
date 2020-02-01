@@ -76,8 +76,22 @@ class FuncionarioController extends Controller
         // Saving the data
         $funcionario->save();
 
+        $endereco = new Endereco;
+        
+        $endereco->cep            = $request->cep;
+        $endereco->logradouro     = $request->logradouro;
+        $endereco->bairro         = $request->bairro;
+        $endereco->numero         = $request->numero;
+        $endereco->cidade         = $request->cidade;
+        $endereco->estado         = $request->estado;
+        $endereco->pais           = $request->pais;
+        $endereco->funcionario_id = $funcionario->id;
+
         // Returning the data
-        return new StoreResource($funcionario);
+        return new StoreResource([
+            'funcionario' => $funcionario,
+            'endereco'    => $endereco
+        ]);
     }
 
     /**

@@ -29,13 +29,20 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'nome'    => 'required',
-            'imagem'  => ['mimes:jpeg,jpg,png,gif', 'max:10000'],
-            'email'   => ['required', 'email', 'unique:funcionarios'],
-            'phone'   => 'string',
-            'cargo'   => 'string',
-            'salario' => 'string',
-            'genero'  => ['string', 'in:masculino,feminino'],
+            'nome'       => 'required',
+            'imagem'     => ['mimes:jpeg,jpg,png,gif', 'max:10000'],
+            'email'      => ['required', 'email', 'unique:funcionarios'],
+            'phone'      => 'string',
+            'cargo'      => 'string',
+            'salario'    => 'string',
+            'genero'     => ['string', 'in:masculino,feminino'],
+            'cep'        => 'string',
+            'logradouro' => 'string',
+            'bairro'     => 'string',
+            'numero'     => 'string',
+            'cidade'     => 'string',
+            'estado'     => 'string',
+            'pais'       => 'string',
         ];
     }
 
