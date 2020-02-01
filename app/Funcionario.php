@@ -41,7 +41,7 @@ class Funcionario extends Model
      * @var array
      */
     protected $hidden = [
-        'id'
+        // 
     ];    
 
     /**
