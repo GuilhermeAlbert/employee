@@ -76,8 +76,10 @@ class FuncionarioController extends Controller
         // Saving the data
         $funcionario->save();
 
+        // Gettin the address 
         $endereco = new Endereco;
         
+        // Setting the address data
         $endereco->cep            = $request->cep;
         $endereco->logradouro     = $request->logradouro;
         $endereco->bairro         = $request->bairro;
@@ -86,6 +88,9 @@ class FuncionarioController extends Controller
         $endereco->estado         = $request->estado;
         $endereco->pais           = $request->pais;
         $endereco->funcionario_id = $funcionario->id;
+
+        // Saving the data
+        $endereco->save();        
 
         // Returning the data
         return new StoreResource([
@@ -122,19 +127,25 @@ class FuncionarioController extends Controller
      *
      * @return Json
      */
-    public function destroy(DestroyFuncionario $request)
+    public function destroy(Destroy $request)
     {
         // Getting the funcionario
         $funcionario = $request->funcionario;
+        
+        // Getting the address
+        $endereco = $request->endereco;
 
         // Deleting the funcionario
         try {
             $funcionario->delete();
+            if ($endereco) {
+                $endereco->delete();
+            }
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
 
         // Returning the data
-        return new DestroyResource();
+        return new DestroyResource($funcionario);
     }
 }

@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Funcionario extends Model
 {
+    use SoftDeletes;
+
 	/**
      * Instancing table of database
      *
@@ -41,7 +44,7 @@ class Funcionario extends Model
      * @var array
      */
     protected $hidden = [
-        'id'
+        // 
     ];    
 
     /**
