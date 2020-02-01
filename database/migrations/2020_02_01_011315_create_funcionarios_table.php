@@ -15,13 +15,13 @@ class CreateFuncionariosTable extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('documento');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('cargo');
-            $table->string('salario');
-            $table->string('genero');
+            $table->string('nome')->nullable(true);
+            $table->string('imagem')->nullable(true);
+            $table->string('email')->nullable(true);
+            $table->string('phone')->nullable(true);
+            $table->string('cargo')->nullable(true);
+            $table->string('salario')->nullable(true);
+            $table->string('genero')->nullable(true);
             $table->timestamps();
             $table->softDeletes();
         });

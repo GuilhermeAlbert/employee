@@ -36,6 +36,15 @@ class Funcionario extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'id'
+    ];    
+
+    /**
      * Instancing dates of the table
      *
      * @var array
