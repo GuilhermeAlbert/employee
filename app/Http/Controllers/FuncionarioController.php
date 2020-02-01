@@ -109,16 +109,40 @@ class FuncionarioController extends Controller
     {
         // Getting the funcionario
         $funcionario = $request->funcionario;
-
-        // Setting the content
-        $funcionario->name = $request->name;
-        $funcionario->email = $request->email;
         
-        // Saving the changes
+        // Setting the data
+        $funcionario->nome    = $request->nome;
+        $funcionario->imagem  = $request->image_path;
+        $funcionario->email   = $request->email;
+        $funcionario->phone   = $request->phone;
+        $funcionario->cargo   = $request->cargo;
+        $funcionario->salario = $request->salario;
+        $funcionario->genero  = $request->genero;
+        
+        // Saving the data
         $funcionario->save();
 
+        // Gettin the address 
+        $endereco = $request->endereco;
+        
+        // Setting the address data
+        $endereco->cep            = $request->cep;
+        $endereco->logradouro     = $request->logradouro;
+        $endereco->bairro         = $request->bairro;
+        $endereco->numero         = $request->numero;
+        $endereco->cidade         = $request->cidade;
+        $endereco->estado         = $request->estado;
+        $endereco->pais           = $request->pais;
+        $endereco->funcionario_id = $funcionario->id;
+
+        // Saving the data
+        $endereco->save();        
+
         // Returning the data
-        return new UpdateResource($funcionario);
+        return new StoreResource([
+            'funcionario' => $funcionario,
+            'endereco'    => $endereco
+        ]);
     }
 
     /**
