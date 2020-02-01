@@ -38,6 +38,6 @@ class CheckEmail implements Rule
      */
     public function message()
     {
-        return 'Email cannot be null.';
+        return __('api.email_cannot_be_null');
     }
 }
