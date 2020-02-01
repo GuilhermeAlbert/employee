@@ -65,8 +65,13 @@ class FuncionarioController extends Controller
         $funcionario = new Funcionario;
         
         // Setting the data
-        $funcionario->name = $request->name;
-        $funcionario->email = $request->email;
+        $funcionario->nome    = $request->nome;
+        $funcionario->imagem  = $request->image_path;
+        $funcionario->email   = $request->email;
+        $funcionario->phone   = $request->phone;
+        $funcionario->cargo   = $request->cargo;
+        $funcionario->salario = $request->salario;
+        $funcionario->genero  = $request->genero;
         
         // Saving the data
         $funcionario->save();
