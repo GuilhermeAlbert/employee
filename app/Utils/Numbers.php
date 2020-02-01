@@ -9,6 +9,7 @@ namespace App\Utils;
  */
 class Numbers
 {
+    const ZERO      = 0;
     const ONE       = 1;
     const TWO       = 2;
     const THREE     = 3;
