@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Employee",
+        "title": "Employee API",
         "description": "This is the Employee's API",
         "termsOfService": "https://treblalabs.com/",
         "contact": {
@@ -31,150 +31,7 @@
                     {
                         "name": "items_per_page",
                         "in": "query",
-                        "description": "Itens per page",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success response"
-                    },
-                    "400": {
-                        "description": "Form request validation error. Invalid input."
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Funcionarios"
-                ],
-                "description": "Store a new user into database",
-                "operationId": "store",
-                "parameters": [
-                    {
-                        "name": "nome",
-                        "in": "query",
-                        "description": "nome",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "imagem",
-                        "in": "query",
-                        "description": "imagem",
-                        "required": true,
-                        "schema": {
-                            "type": "file"
-                        }
-                    },
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "description": "email",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "phone",
-                        "in": "query",
-                        "description": "phone",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "cargo",
-                        "in": "query",
-                        "description": "cargo",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "salario",
-                        "in": "query",
-                        "description": "salario",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "genero",
-                        "in": "query",
-                        "description": "genero",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "cep",
-                        "in": "query",
-                        "description": "cep",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "logradouro",
-                        "in": "query",
-                        "description": "logradouro",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "bairro",
-                        "in": "query",
-                        "description": "bairro",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "numero",
-                        "in": "query",
-                        "description": "numero",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "cidade",
-                        "in": "query",
-                        "description": "cidade",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "estado",
-                        "in": "query",
-                        "description": "estado",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "pais",
-                        "in": "query",
-                        "description": "pais",
+                        "description": "Itens per page to be used in pagination.",
                         "required": false,
                         "schema": {
                             "type": "string"
@@ -341,6 +198,169 @@
                 ],
                 "description": "Get a specifc user from API",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "funcionario",
+                        "in": "path",
+                        "description": "The funcionario's ID",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    },
+                    "400": {
+                        "description": "Form request validation error. Invalid input."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Funcionarios"
+                ],
+                "description": "Store a new user into database",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "funcionario",
+                        "in": "path",
+                        "description": "The funcionario's ID",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "nome",
+                        "in": "query",
+                        "description": "nome",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "imagem",
+                        "in": "query",
+                        "description": "imagem",
+                        "required": true,
+                        "schema": {
+                            "type": "file"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "phone",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cargo",
+                        "in": "query",
+                        "description": "cargo",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "salario",
+                        "in": "query",
+                        "description": "salario",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "genero",
+                        "in": "query",
+                        "description": "genero",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cep",
+                        "in": "query",
+                        "description": "cep",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "logradouro",
+                        "in": "query",
+                        "description": "logradouro",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "bairro",
+                        "in": "query",
+                        "description": "bairro",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "numero",
+                        "in": "query",
+                        "description": "numero",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cidade",
+                        "in": "query",
+                        "description": "cidade",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "estado",
+                        "in": "query",
+                        "description": "estado",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pais",
+                        "in": "query",
+                        "description": "pais",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success response"
@@ -370,7 +390,7 @@
     "tags": [
         {
             "name": "Funcionarios",
-            "description": "Employees API"
+            "description": "This is the API to manage the employees application."
         }
     ]
 }

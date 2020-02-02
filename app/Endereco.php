@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Canducci\Cep\Facades\Cep;
 
 class Endereco extends Model
 {
@@ -49,4 +50,24 @@ class Endereco extends Model
         'deleted_at'
     ]; 
 
+    public static function findByZipcode($zipcode)
+    {
+        // Init array
+        $cepArray = [];
+
+        try {
+            // Find with zipcode
+            $cepFind = Cep::find($zipcode);
+    
+            // Pass to array
+            $cepInfo = $cepFind->toArray();
+    
+            // Get the results
+            $cepArray = $cepInfo->result();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        
+        return $cepArray;
+    }
 }
