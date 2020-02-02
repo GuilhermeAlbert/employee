@@ -167,6 +167,7 @@ return [
          */
         L5Swagger\L5SwaggerServiceProvider::class,
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
+        'Canducci\Cep\Providers\CepServiceProvider',
 
         /*
          * Application Service Providers...

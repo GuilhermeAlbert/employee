@@ -8,6 +8,8 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Utils\HttpStatusCodes;
 
 use Hash, Image;
+use App\Funcionario;
+use App\Endereco;
 
 class Store extends FormRequest
 {
@@ -85,8 +87,29 @@ class Store extends FormRequest
             $this->image_path = urldecode($this->host_url . '/img/cache/thumb/' . $this->filename . "." .$this->file_extension);
         }
 
+        // Verify if exist a CEP
+        if($this->cep){
+            // Find address by CEP
+            $this->cepFind = Endereco::findByZipcode($this->cep);
+
+            // Fill the address with searched address
+            if ($this->cepFind) {
+                // Address validation rules
+                ($this->logradouro) ? $this->logradouro = $this->logradouro : $this->logradouro = ($this->cepFind['logradouro']) ? $this->cepFind['logradouro'] : "";
+                ($this->bairro)     ? $this->bairro     = $this->bairro     : $this->bairro     = ($this->cepFind['bairro'])     ? $this->cepFind['bairro']     : "";
+                ($this->cidade)     ? $this->cidade     = $this->cidade     : $this->cidade     = ($this->cepFind['localidade']) ? $this->cepFind['localidade'] : "";
+                ($this->estado)     ? $this->estado     = $this->estado     : $this->estado     = ($this->cepFind['uf'])         ? $this->cepFind['uf']         : "";
+            }
+        }
+
+        // Return data to be validate
         $this->merge([
             'image_path' => $this->image_path,
+            'logradouro' => ($this->logradouro) ? $this->logradouro : "",
+            'bairro'     => ($this->bairro) ? $this->bairro : "",
+            'cidade'     => ($this->cidade) ? $this->cidade : "",
+            'estado'     => ($this->estado) ? $this->estado : "",
+            'pais'       => ($this->pais) ? $this->pais : "Brasil",
         ]);
     }    
 

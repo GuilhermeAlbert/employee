@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "canducci/cep": "^2.0",
         "darkaonline/l5-swagger": "^6.0",
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.5",

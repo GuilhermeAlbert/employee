@@ -85,10 +85,7 @@ class Update extends FormRequest
 
             // Getting the address
             $this->endereco = Endereco::find($this->funcionario_id);
-            
-            
-            // dd($this->funcionario->email);
-            
+                        
             // Employee validation rules
             ($this->nome)    ? $this->nome    = $this->nome    : $this->nome    = ($this->funcionario->nome)    ? $this->funcionario->nome    : "";
             ($this->email)   ? $this->email   = $this->email   : $this->email   = ($this->funcionario->email)   ? $this->funcionario->email   : "";
