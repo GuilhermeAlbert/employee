@@ -6,7 +6,7 @@
  * @OA\Info(
  *     description="This is the Employee's API",
  *     version="1.0.0",
- *     title="Employee",
+ *     title="Employee API",
  *     termsOfService="https://treblalabs.com/",
  *     @OA\Contact(
  *         email="mail@treblalabs.com"
@@ -23,7 +23,7 @@
  * 
  * @OA\Tag(
  *     name="Funcionarios",
- *     description="Employees API",
+ *     description="This is the API to manage the employees application.",
  * )
  */
 namespace App\Http\Controllers;
@@ -38,7 +38,7 @@ class SwaggerController extends Controller
      *      operationId="index",
      *      description="Get all users from API",
      *      @OA\Parameter(name="items_per_page",
-     *          description="Itens per page",
+     *          description="Itens per page to be used in pagination.",
      *          in="query",
      *          required=false,
      *          @OA\Schema(type="string")
@@ -60,6 +60,12 @@ class SwaggerController extends Controller
      *      tags={"Funcionarios"},
      *      operationId="show",
      *      description="Get a specifc user from API",
+     *      @OA\Parameter(name="funcionario",
+     *          description="The funcionario's ID",
+     *          in="path",
+     *          required=true,
+     *          @OA\Schema(type="number")
+     *      ),
      *      @OA\Response(
      *          response="200",
      *          description="Success response"
@@ -174,10 +180,16 @@ class SwaggerController extends Controller
 
 
     /**
-     * @OA\Put(path="/api/funcionarios",
+     * @OA\Put(path="/api/funcionarios/{funcionario}",
      *      tags={"Funcionarios"},
-     *      operationId="store",
+     *      operationId="update",
      *      description="Store a new user into database",
+     *      @OA\Parameter(name="funcionario",
+     *          description="The funcionario's ID",
+     *          in="path",
+     *          required=true,
+     *          @OA\Schema(type="number")
+     *      ),
      *      @OA\Parameter(name="nome",
      *          description="nome",
      *          in="query",
