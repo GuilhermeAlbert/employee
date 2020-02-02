@@ -1,78 +1,173 @@
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## About Employee
 
-## About Laravel
+This project contains the back-end of the application. Check the release notes:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Laravel soft deletes](https://laravel.com/docs/5.8/eloquent#soft-deleting): Virtual destroy your data of database.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Redis](https://redis.io/documentation) Cache: Manage the cache with the NoSQL database Redis.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Image cache](http://image.intervention.io/use/cache)/image resize: Make a resize of the image but keep the aspect ratio of this. Also save the image in cache.
 
-## Learning Laravel
+- [Unit tests](https://laravel.com/docs/master/http-tests) to check the feature branch.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Complete resource CRUD with the RESTful API patters:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    `GET`: Index - Get all resources
 
-## Laravel Sponsors
+    `GET`: Show - Get a specific resource
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    `POST`: Store - Save a new resource
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+    `PUT/PATCH`: Update - Update a specific resource
 
-## Contributing
+    `DELETE`: Destroy - Delete a specific resource
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- [Form request](https://laravel.com/docs/master/validation) for validate the request data.
 
-## Code of Conduct
+- [Rules](https://laravel.com/docs/master/validation#custom-validation-rules) to validate specific system rules.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- [Resources](https://laravel.com/docs/master/eloquent-resources) to send the API response.
 
-## Security Vulnerabilities
+- [Command](https://github.com/GuilhermeAlbert/employee/blob/master/app/Console/Commands/CacheClear.php) to clear all application cache: `php artisan clear:all`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- API documentation with [Swagger Open API anotation](https://swagger.io/). Endpoint: `/api/documentation`
 
-## License
+- Package of translation files: Messages in english and portuguese.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+----
+
+## Getting Started
+Perform configuration of the development environment using a web server, database, and PHP dependencies.
+
+### Linux: Ubuntu 16.04 LTS
+Perform the installation of Apache, MySQL, PHP and their modules.
+
+```shell
+sudo apt-get update
+```
+
+Install all necessary dependencies:
+
+```shell
+sudo apt-get install php7.2 php7.2-cli php7.2-common php7.2-xml php7.2-mbstring php7.2-pgsql php7.2-mysql php7.2-curl php7.2-gd php7.2-json curl -y
+```
+
+And then install the redis cache and php graphics extension.
+
+```shell
+sudo apt-get php-redis php-gd
+```
+
+Verify PHP version  `php -v`
+
+
+```
+PHP 7.2.17-1+ubuntu16.04.1+deb.sury.org+3 (cli) (built: Apr 10 2019 10:50:19) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.2.17-1+ubuntu16.04.1+deb.sury.org+3, Copyright (c) 1999-2018, by Zend Technologies
+```
+
+Start apache `sudo systemctl start apache2 && systemctl status apache2`
+
+For installation of laravel, you first have to have the composer on your machine, if you can not download an executable from it and install the composer without too much trouble on your machine.
+
+Click on the link to download:
+
+```shell 
+https://getcomposer.org/
+```
+
+With the composer on your Windows machine, we will install our utility, the Laravel Installer. First open your command prompt, just use the key combination `CTRL + R` and in the window that appears enter: `cmd`. After that press `ENTER` to open the prompt.
+
+With the prompt open, type and execute the command below:
+
+```shell 
+composer global require "laravel/installer"
+```
+
+To access the application files, you need to download the repository in GitHub.
+
+
+## Project installation
+
+Perform cloning of the repository through GitHub:
+
+```shell 
+git clone https://github.com/GuilhermeAlbert/employee.git
+```
+
+Navigate through the folders on your computer until you reach the cloned folder:
+
+```shell 
+cd employee
+```
+
+Use the *composer* to perform the installation:
+
+```shell 
+composer install
+```
+
+You will need to configure the `.env` file for the project by setting the connection values to the database and if necessary, creating a new hash key.
+
+## Creating database:
+Create the database in your MySQL database manager environment:
+
+```sql
+CREATE DATABASE employee;
+```
+
+Use migrations to create the database tables:
+
+```shell
+php artisan migrate
+```
+
+Run all database factory fake data:
+
+```shell
+php artisan db:seed
+```
+
+## Starting server
+Start displaying the application from the server:
+
+```shell
+php artisan serve
+```
+
+If everything is correct, when running `php artisan serve` in the terminal, something like:
+
+```
+Laravel development server started: <http://127.0.0.1:8000>
+```
+
+----
+
+## Unit tests
+
+You can run the unit tests following the test docs above:
+
+Use the following commands to run unit tests. 
+
+##### Specific test
+
+To run a specific tests, use the following command: 
+
+`./vendor/bin/phpunit --filter testGetSuccess ./tests/Unit/IndexFuncionarioTest`.
+`./vendor/bin/phpunit --filter testGetFail ./tests/Unit/IndexFuncionarioTest`.
+
+You can see all possible unit tests here: [https://github.com/GuilhermeAlbert/employee/tree/master/tests/Unit](https://github.com/GuilhermeAlbert/employee/tree/master/tests/Unit)
+
+Explaining: 
+
+**`testGetSuccess`**: Method name.
+
+**`./tests/Unit/IndexFuncionarioTest`**:  Class name.
+
+##### All tests
+
+To run all tests, use the following command: `./vendor/bin/phpunit`.
