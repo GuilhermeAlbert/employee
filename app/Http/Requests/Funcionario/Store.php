@@ -36,9 +36,9 @@ class Store extends FormRequest
             'email'      => ['required', 'email', 'unique:funcionarios'],
             'phone'      => ['string', 'phone:US,BR'],
             'cargo'      => 'string',
-            'salario'    => 'string',
+            'salario'    => 'regex:/^\d+(\.\d{1,2})?$/',
             'genero'     => ['string', 'in:masculino,feminino'],
-            'cep'        => 'string',
+            'cep'        => ['string', 'min:5'],
             'logradouro' => 'string',
             'bairro'     => 'string',
             'numero'     => 'string',
@@ -93,7 +93,7 @@ class Store extends FormRequest
             $this->cepFind = Endereco::findByZipcode($this->cep);
 
             // Fill the address with searched address
-            if ($this->cepFind) {
+            if ($this->cepFind != []) {
                 // Address validation rules
                 ($this->logradouro) ? $this->logradouro = $this->logradouro : $this->logradouro = ($this->cepFind['logradouro']) ? $this->cepFind['logradouro'] : "";
                 ($this->bairro)     ? $this->bairro     = $this->bairro     : $this->bairro     = ($this->cepFind['bairro'])     ? $this->cepFind['bairro']     : "";
