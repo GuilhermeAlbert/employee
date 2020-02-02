@@ -104,6 +104,22 @@ class Update extends FormRequest
             ($this->estado)     ? $this->estado     = $this->estado     : $this->estado     = ($this->funcionario->estado)     ? $this->funcionario->estado     : "";
             ($this->pais)       ? $this->pais       = $this->pais       : $this->pais       = ($this->funcionario->pais)       ? $this->funcionario->pais       : "";
     
+            // Verify if exist a CEP
+            if($this->cep){
+                // Find address by CEP
+                $this->cepFind = Endereco::findByZipcode($this->cep);
+
+                // Fill the address with searched address
+                if ($this->cepFind) {
+                    // Address validation rules
+                    ($this->logradouro) ? $this->logradouro = $this->logradouro : $this->logradouro = ($this->cepFind['logradouro']) ? $this->cepFind['logradouro'] : "";
+                    ($this->bairro)     ? $this->bairro     = $this->bairro     : $this->bairro     = ($this->cepFind['bairro'])     ? $this->cepFind['bairro']     : "";
+                    ($this->cidade)     ? $this->cidade     = $this->cidade     : $this->cidade     = ($this->cepFind['localidade']) ? $this->cepFind['localidade'] : "";
+                    ($this->estado)     ? $this->estado     = $this->estado     : $this->estado     = ($this->cepFind['uf'])         ? $this->cepFind['uf']         : "";
+                }
+            }            
+
+            // Initialize image path
             $this->image_path = "";
     
             // Image manipulation
@@ -138,13 +154,13 @@ class Update extends FormRequest
                 'cargo'          => $this->cargo,
                 'salario'        => $this->salario,
                 'genero'         => $this->genero,
-                'cep'            => $this->cep,
-                'logradouro'     => $this->logradouro,
-                'bairro'         => $this->bairro,
-                'numero'         => $this->numero,
-                'cidade'         => $this->cidade,
-                'estado'         => $this->estado,
-                'pais'           => $this->pais,
+                'cep'            => ($this->cep)        ? $this->cep        : "",
+                'logradouro'     => ($this->logradouro) ? $this->logradouro : "",
+                'bairro'         => ($this->bairro)     ? $this->bairro     : "",
+                'numero'         => ($this->numero)     ? $this->numero     : "",
+                'cidade'         => ($this->cidade)     ? $this->cidade     : "",
+                'estado'         => ($this->estado)     ? $this->estado     : "",
+                'pais'           => ($this->pais)       ? $this->pais       : "Brasil",
             ]);
         } else {
             // Prepare the data to validate
