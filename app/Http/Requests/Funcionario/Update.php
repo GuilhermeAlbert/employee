@@ -36,7 +36,7 @@ class Update extends FormRequest
             'funcionario_id' => ['numeric', 'required'],
             'funcionario'    => 'required',
             'nome'           => 'required',
-            'phone'          => 'string',
+            'phone'          => ['string', 'phone:US,BR'],
             'cargo'          => 'string',
             'salario'        => 'string',
             'genero'         => ['string', 'in:masculino,feminino'],

@@ -4,7 +4,7 @@
  * @license Apache 2.0
  *
  * @OA\Info(
- *     description="This is the Employee's API",
+ *     description="This is the Employee's API. Use the button 'try it out' to do the calls.",
  *     version="1.0.0",
  *     title="Employee API",
  *     termsOfService="https://treblalabs.com/",

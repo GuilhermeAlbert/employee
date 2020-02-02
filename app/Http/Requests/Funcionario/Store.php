@@ -32,7 +32,7 @@ class Store extends FormRequest
             'nome'       => 'required',
             'imagem'     => ['mimes:jpeg,jpg,png,gif', 'max:10000'],
             'email'      => ['required', 'email', 'unique:funcionarios'],
-            'phone'      => 'string',
+            'phone'      => ['string', 'phone:US,BR'],
             'cargo'      => 'string',
             'salario'    => 'string',
             'genero'     => ['string', 'in:masculino,feminino'],
