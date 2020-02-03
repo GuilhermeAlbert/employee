@@ -113,7 +113,21 @@ Use the *composer* to perform the installation:
 composer install
 ```
 
+Use the Node package Manager to install dependencies:
+
+```shell 
+npm install
+```
+
 You will need to configure the `.env` file for the project by setting the connection values to the database and if necessary, creating a new hash key.
+
+```shell
+cp .env.example .env
+```
+
+```shell
+php artisan key:generate
+```
 
 ## Creating database:
 Create the database in your MySQL database manager environment:
@@ -132,6 +146,12 @@ Run all database factory fake data:
 
 ```shell
 php artisan db:seed
+```
+
+Run this command to install passport auth:
+
+```shell
+php artisan passport:install
 ```
 
 ## Starting server
