@@ -167,7 +167,7 @@ If everything is correct, when running `php artisan serve` in the terminal, some
 Laravel development server started: <http://127.0.0.1:8000>
 ```
 
-To test the API, you must follow the steps: []().
+To test the API, you must follow the steps: [https://github.com/GuilhermeAlbert/employee/blob/master/public/documentation/en-us/how-to-get-a-api-key.md](https://github.com/GuilhermeAlbert/employee/blob/master/public/documentation/en-us/how-to-get-a-api-key.md).
 
 ----
 
