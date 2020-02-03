@@ -36,6 +36,8 @@ This project contains the back-end of the application. Check the release notes:
 
 - Package of translation files: Messages in english and portuguese.
 
+- [Passport](https://laravel.com/docs/master/passport) to authenticate on API.
+
 ----
 
 ## Getting Started
