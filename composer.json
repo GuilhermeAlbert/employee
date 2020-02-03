@@ -15,7 +15,9 @@
         "intervention/image": "^2.5",
         "intervention/imagecache": "^2.4",
         "laravel/framework": "^6.2",
+        "laravel/passport": "^8.3",
         "laravel/tinker": "^2.0",
+        "laravel/ui": "^1.1",
         "predis/predis": "^1.1",
         "propaganistas/laravel-phone": "^4.2",
         "zircote/swagger-php": "^3.0"
