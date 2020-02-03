@@ -71,7 +71,6 @@
                         <a href="{{ url('/home') }}">Home</a>
                         <a href="{{ url('/api/documentation') }}">API docs</a>
                     @else
-                        <a href="{{ url('/api/documentation') }}">API docs</a>
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
