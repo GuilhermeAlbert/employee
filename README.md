@@ -158,6 +158,7 @@ Use the following commands to run unit tests.
 To run a specific tests, use the following command: 
 
 `./vendor/bin/phpunit --filter testGetSuccess ./tests/Unit/IndexFuncionarioTest`.
+
 `./vendor/bin/phpunit --filter testGetFail ./tests/Unit/IndexFuncionarioTest`.
 
 You can see all possible unit tests here: [https://github.com/GuilhermeAlbert/employee/tree/master/tests/Unit](https://github.com/GuilhermeAlbert/employee/tree/master/tests/Unit)
