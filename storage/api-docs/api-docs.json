@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Employee API",
-        "description": "This is the Employee's API",
+        "description": "This is the Employee's API. Use the button 'try it out' to do the calls.",
         "termsOfService": "https://treblalabs.com/",
         "contact": {
             "email": "mail@treblalabs.com"
